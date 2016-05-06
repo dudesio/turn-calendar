@@ -202,9 +202,8 @@ angular.module('turn/calendar', []).constant('turnCalendarDefaults', {
   '$attrs',
   'turnCalendarDefaults',
   'turnCalendarService',
-  '$document',
-  'FoundationApi',
-  function ($scope, $attrs, turnCalendarDefaults, turnCalendarService, $document, FoundationApi) {
+  '$document'
+  function ($scope, $attrs, turnCalendarDefaults, turnCalendarService, $document) {
     var self = this, calendarOptions, MONTH_NAME,
       // These two variables are used to track start date and end date click
       selectedStartDate = null, selectedEndDate = null,
@@ -1072,7 +1071,7 @@ angular.module('turn/calendar', []).constant('turnCalendarDefaults', {
       $scope.currentSelectedEndDate = selectedEndDate;
       $scope.startDateString = selectedStartDate.date;
       $scope.endDateString = selectedEndDate.date;
-      FoundationApi.publish('range_filter', $scope.selectedRange);
+      $scope.$emit('range_filter', { range: $scope.selectedRange });
       if ($scope.applyCallback) {
         $scope.applyCallback();
       }
@@ -1436,6 +1435,6 @@ angular.module('turn/calendar', []).constant('turnCalendarDefaults', {
       selectionMode: '='
     },
     controller: 'CalendarController',
-    templateUrl: 'app/templates/projects/turn-calendar.html'
+    templateUrl: 'templates/calendar.html'
   };
 });
