@@ -202,7 +202,7 @@ angular.module('turn/calendar', []).constant('turnCalendarDefaults', {
   '$attrs',
   'turnCalendarDefaults',
   'turnCalendarService',
-  '$document'
+  '$document',
   function ($scope, $attrs, turnCalendarDefaults, turnCalendarService, $document) {
     var self = this, calendarOptions, MONTH_NAME,
       // These two variables are used to track start date and end date click
